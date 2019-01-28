@@ -1,0 +1,155 @@
+
+CREATE TABLE tb_re_biblioteca
+(
+  id_re_biblioteca serial PRIMARY KEY NOT NULL,
+  id_biblioteca  integer,
+  nome character varying(50) NOT NULL,
+  data_funda character varying(50) NOT NULL,
+  registro_biblioteca character varying(50) NOT NULL,
+  tipo_telefone character varying(50) NOT NULL,
+  ddd character varying(50) NOT NULL,
+  numero_telefone character varying(50) NOT NULL,
+  email character varying(50) NOT NULL,
+  senha character varying(50) NOT NULL,
+  data_cadastro date
+)
+CREATE TABLE tb_biblioteca_endereco
+(
+  id_endereco serial PRIMARY KEY  NOT NULL,
+  id_bilioteca integer,
+  tipo_residencia character varying(50) NOT NULL,
+  tipo_logradouro character varying(50) NOT NULL,
+  logradouro character varying(50) NOT NULL,
+  numero character varying(50) NOT NULL,
+  bairro character varying(50) NOT NULL,
+  cep character varying(50) NOT NULL,
+  cidade character varying(50) NOT NULL,
+  estado character varying(50) NOT NULL,
+  pais character varying(50) NOT NULL
+)
+
+
+
+
+
+
+
+
+
+CREATE TABLE tb_estoque_livro
+(
+  id_estoque serial PRIMARY KEY NOT NULL,
+  id_livro_ integer,
+  data_cadastro date,
+  qt character varying(50) NOT NULL,
+  id_biblioteca integer
+)
+
+
+CREATE TABLE tb_reservado
+(
+  id_estoque serial PRIMARY KEY NOT NULL,
+  id_livro_ integer,
+  data_cadastro date,
+  qt character varying(50) NOT NULL,
+  id_usuario integer
+)
+
+
+select  tb_biblioteca.id_biblioteca, tb_re_biblioteca.id_re_biblioteca,tb_re_biblioteca.data_cadastro, nome, data_funda, registro_biblioteca, tipo_telefone, ddd, numero_telefone,
+					 email, senha, tipo_residencia, tipo_logradouro, logradouro, numero, bairro, cep, cidade, estado, pais 
+					 from tb_biblioteca JOIN  tb_re_biblioteca ON  tb_biblioteca.id_re_biblioteca= tb_re_biblioteca.id_re_biblioteca  join
+					 tb_biblioteca_endereco ON tb_biblioteca.id_biblioteca=tb_biblioteca_endereco.id_bilioteca
+					 group by tb_biblioteca.id_biblioteca, tb_re_biblioteca.id_re_biblioteca,tb_re_biblioteca.data_cadastro, nome, data_funda, registro_biblioteca, tipo_telefone, ddd, numero_telefone,
+					 email, senha, tipo_residencia, tipo_logradouro, logradouro, numero, bairro, cep, cidade, estado, pais
+
+
+
+
+
+
+SELECT tb_livro.id_livro, tb_re_livro.id_re_livro,tb_estoque_livro.id_biblioteca,id_estoque,autor,editora,titulo,edicao,isbn,pagina,sinopse,altura,largura, profundidade,
+					 responsavel,status,ano,tb_re_livro.data_cadastro,cod_barra,qt,peso, 
+					string_agg(categoria, ', ') as categoria  FROM tb_livro JOIN tb_re_livro ON tb_livro.id_re_livro= tb_re_livro.id_re_livro
+					 JOIN tb_categoria_livro_dados on tb_livro.id_livro= tb_categoria_livro_dados.id_livro JOIN tb_estoque_livro on tb_livro.id_livro=tb_estoque_livro.id_livro_
+					 GROUP BY  tb_livro.id_livro, tb_re_livro.id_re_livro,autor,editora,titulo,edicao,isbn,pagina,sinopse,altura,largura, profundidade,
+					 responsavel,status,ano,tb_re_livro.data_cadastro,cod_barra,qt,peso,tb_estoque_livro.id_biblioteca,id_estoque
+
+
+
+
+
+CREATE TABLE tb_reserva(
+  id_reserva serial PRIMARY KEY NOT NULL,
+  id_estoque integer,
+  id_usuario integer,
+  qt character varying(50) NOT NULL
+)
+
+SELECT id_reserva, tb_reserva.id_estoque, id_usuario, tb_reserva.qt from tb_reserva JOIN tb_estoque_livro on tb_reserva.id_estoque=tb_estoque_livro.id_estoque
+
+select * from tb_reserva where id_usuario=16
+
+
+
+
+CREATE TABLE tb_reserva
+(
+  id_reserva serial NOT NULL,
+  id_estoque integer,
+  id_usuario integer,
+  qt character varying(50) NOT NULL,
+  CONSTRAINT tb_reserva_pkey PRIMARY KEY (id_reserva)
+)
+
+
+CREATE TABLE tb_estoque_livro
+(
+  id_estoque serial NOT NULL,
+  id_livro_ integer,
+  data_cadastro date,
+  qt character varying(50) NOT NULL,
+  id_biblioteca integer,
+  CONSTRAINT tb_estoque_livro_pkey PRIMARY KEY (id_estoque)
+)
+
+CREATE TABLE tb_biblioteca
+(
+  id_biblioteca serial NOT NULL,
+  id_re_biblioteca integer,
+  data_cadastro date,
+  id_statusmotivo integer,
+  CONSTRAINT tb_biblioteca_pkey PRIMARY KEY (id_biblioteca)
+)
+CREATE TABLE tb_biblioteca_endereco
+(
+  id_endereco serial NOT NULL,
+  id_bilioteca integer,
+  tipo_residencia character varying(50) NOT NULL,
+  tipo_logradouro character varying(50) NOT NULL,
+  logradouro character varying(50) NOT NULL,
+  numero character varying(50) NOT NULL,
+  bairro character varying(50) NOT NULL,
+  cep character varying(50) NOT NULL,
+  cidade character varying(50) NOT NULL,
+  estado character varying(50) NOT NULL,
+  pais character varying(50) NOT NULL,
+  CONSTRAINT tb_biblioteca_endereco_pkey PRIMARY KEY (id_endereco)
+)
+
+
+CREATE TABLE tb_re_biblioteca
+(
+  id_re_biblioteca serial NOT NULL,
+  id_biblioteca integer,
+  nome character varying(50) NOT NULL,
+  data_funda character varying(50) NOT NULL,
+  registro_biblioteca character varying(50) NOT NULL,
+  tipo_telefone character varying(50) NOT NULL,
+  ddd character varying(50) NOT NULL,
+  numero_telefone character varying(50) NOT NULL,
+  email character varying(50) NOT NULL,
+  senha character varying(50) NOT NULL,
+  data_cadastro date,
+  CONSTRAINT tb_re_biblioteca_pkey PRIMARY KEY (id_re_biblioteca)
+)

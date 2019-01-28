@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>les12015-web</display-name>
+	<welcome-file-list>
+		<welcome-file>Home.jsp</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+	<servlet>
+		<description></description>
+		<display-name>Servlet</display-name>
+		<servlet-name>Servlet</servlet-name>
+		<servlet-class>les12015.controle.web.Servlet</servlet-class>
+	</servlet>
+
+
+
+	<servlet-mapping>
+		<servlet-name>Servlet</servlet-name>
+		<url-pattern>/SalvarLivro</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>Servlet</servlet-name>
+		<url-pattern>/ConsultarLivro</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>Servlet</servlet-name>
+		<url-pattern>/AlterarLivro</url-pattern>
+	</servlet-mapping>
+
+<servlet-mapping>
+		<servlet-name>Servlet</servlet-name>
+		<url-pattern>/SalvarAluno</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>Servlet</servlet-name>
+		<url-pattern>/ConsultarAluno</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>Servlet</servlet-name>
+		<url-pattern>/AlterarAluno</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>Servlet</servlet-name>
+		<url-pattern>/ConsultarCategoria</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>Servlet</servlet-name>
+		<url-pattern>/ConsultarSubCategoria</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>Servlet</servlet-name>
+		<url-pattern>/Login</url-pattern>
+	</servlet-mapping>
+
+		<servlet-mapping>
+		<servlet-name>Servlet</servlet-name>
+		<url-pattern>/ConsultarCategoriaDados</url-pattern>
+	</servlet-mapping>
+			<servlet-mapping>
+		<servlet-name>Servlet</servlet-name>
+		<url-pattern>/SalvarEstoque</url-pattern>
+	</servlet-mapping>
+	
+				<servlet-mapping>
+		<servlet-name>Servlet</servlet-name>
+		<url-pattern>/AlterarEstoque</url-pattern>
+	</servlet-mapping>
+				<servlet-mapping>
+		<servlet-name>Servlet</servlet-name>
+		<url-pattern>/ConsultarBiblioteca</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>Servlet</servlet-name>
+		<url-pattern>/PesquisarEstoque</url-pattern>
+	</servlet-mapping>
+			<servlet-mapping>
+		<servlet-name>Servlet</servlet-name>
+		<url-pattern>/ConsultarReserva</url-pattern>
+	</servlet-mapping>
+				<servlet-mapping>
+		<servlet-name>Servlet</servlet-name>
+		<url-pattern>/ConsultarAdmin</url-pattern>
+	</servlet-mapping>
+				<servlet-mapping>
+		<servlet-name>Servlet</servlet-name>
+		<url-pattern>/ConsultarAnalise</url-pattern>
+	</servlet-mapping>
+	
+				<servlet-mapping>
+		<servlet-name>Servlet</servlet-name>
+		<url-pattern>/AlterarReserva</url-pattern>
+	</servlet-mapping>
+					<servlet-mapping>
+		<servlet-name>Servlet</servlet-name>
+		<url-pattern>/SalvarDataRetirado</url-pattern>
+	</servlet-mapping>
+		<servlet-mapping>
+		<servlet-name>Servlet</servlet-name>
+		<url-pattern>/Admin</url-pattern>
+	</servlet-mapping>
+			<servlet-mapping>
+		<servlet-name>Servlet</servlet-name>
+		<url-pattern>/ConsultarMultas</url-pattern>
+	</servlet-mapping>
+				<servlet-mapping>
+		<servlet-name>Servlet</servlet-name>
+		<url-pattern>/AlterarMulta</url-pattern>
+	</servlet-mapping>
+</web-app>

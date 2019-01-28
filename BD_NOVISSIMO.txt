@@ -1,0 +1,37 @@
+select distinct  id_reserva, tb_estoque_livro.id_estoque, id_usuario, condicao, titulo, data, nome, tb_estoque_livro.qt, tipo_usuario
+from tb_reserva join tb_estoque_livro on tb_reserva.id_estoque = tb_estoque_livro.id_estoque
+join tb_re_biblioteca on tb_reserva.id_usuario = tb_re_biblioteca.id_biblioteca
+join tb_re_livro on tb_estoque_livro.id_livro_ = tb_re_livro.id_livro
+ where condicao = 'EM ESPERA'
+
+ select * from  tb_reserva
+
+
+select distinct   id_reserva, tb_estoque_livro.id_estoque, id_usuario, condicao, titulo, data, nome, tipo_usuario, ano
+from tb_reserva join tb_estoque_livro on tb_reserva.id_estoque = tb_estoque_livro.id_estoque
+join tb_re_biblioteca on tb_reserva.id_usuario = tb_re_biblioteca.id_biblioteca
+join tb_re_livro on tb_estoque_livro.id_livro_ = tb_re_livro.id_livro
+
+
+ select COUNT(*) from  tb_reserva join tb_estoque_livro on tb_reserva.id_estoque = tb_estoque_livro.id_estoque
+join tb_re_biblioteca on tb_reserva.id_usuario = tb_re_biblioteca.id_biblioteca
+join tb_re_livro on tb_estoque_livro.id_livro_ = tb_re_livro.id_livro
+
+
+select SUM(tipo_usuario) AS total from tb_reserva where tipo_usuario = 'aluno'
+
+
+SELECT
+ SUM (id_estoque) AS total
+FROM
+ tb_reserva
+WHERE
+ tipo_usuario = 'aluno';
+
+SELECT
+ SUM (id_estoque) AS total
+FROM
+ tb_reserva
+WHERE
+ tipo_usuario = 'biblioteca';
+

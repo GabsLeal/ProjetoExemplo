@@ -1,0 +1,44 @@
+select distinct  tb_livro_entregar.id_reserva, tb_estoque_livro.id_estoque, id_usuario, condicao, titulo, data, nome, data_retirado, data_entregar 
+ from tb_reserva 
+join tb_livro_entregar on  tb_reserva.id_reserva = tb_livro_entregar.id_reserva
+ join tb_re_aluno on tb_reserva.id_usuario = tb_re_aluno.id_aluno
+ join tb_estoque_livro on tb_reserva.id_estoque = tb_estoque_livro.id_estoque
+join tb_re_livro on tb_estoque_livro.id_livro_ = tb_re_livro.id_livro
+where id_usuario = 17 and condicao = 'RETIRADO'
+
+
+
+select * from tb_reserva
+
+
+CREATE TABLE tb_admin
+(
+  id_admin serial PRIMARY KEY NOT NULL,
+  login  character varying(50) NOT NULL,
+  senha  character varying(50) NOT NULL
+)
+
+select * from tb_admin where login = 'admin' and senha = 'admin'
+
+
+
+CREATE TABLE tb_livro_restirado
+(
+  id_livro_restirado serial  PRIMARY KEY NOT NULL,
+  id_estoque integer,
+  id_usuario integer,
+  qt character varying(50) NOT NULL,
+  condicao character varying(50),
+  data_retirado date,
+  data_entregar date
+)
+
+CREATE TABLE tb_livro_entregar
+(
+  id_livro_entregar serial  PRIMARY KEY NOT NULL,
+  id_reserva integer,
+  data_retirado date,
+  data_entregar date
+)
+
+select * from tb_livro_entregar
